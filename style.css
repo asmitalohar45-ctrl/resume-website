@@ -1,0 +1,306 @@
+/* =========================================
+   1. COLOR PALETTE (Color Hunt)
+   ========================================= */
+:root {
+  --navy:  #1B365D;
+  --blue:  #005A9C;
+  --sky:   #60C1E5;
+  --ice:   #A0E0EF;
+  --white: #ffffff;
+  --ice-soft: #E8F7FB;
+}
+
+/* =========================================
+   2. BASE STYLES (element selectors)
+   ========================================= */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+
+body {
+  margin: 0;
+  font-family: "Public Sans", Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--navy);
+  background: var(--white);
+}
+
+h1, h2, h3 {
+  font-family: "Bricolage Grotesque", Georgia, sans-serif;
+  line-height: 1.1;
+  margin: 0 0 0.8rem;
+}
+
+h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); }
+
+h2 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  color: var(--blue);
+  margin-bottom: 2rem;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 5px;
+  margin-top: 0.7rem;
+  background: var(--sky);
+  border-radius: 5px;
+}
+
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--blue); }
+a:hover { color: var(--navy); }
+
+a:focus-visible {
+  outline: 3px solid var(--sky);
+  outline-offset: 3px;
+}
+
+img { max-width: 100%; display: block; }
+
+ul { padding: 0; margin: 0; list-style: none; }
+
+/* =========================================
+   3. NAVIGATION BAR (flexbox + sticky)
+   ========================================= */
+#top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 0.9rem 6vw;
+  background: var(--navy);
+}
+
+.brand {
+  font-family: "Bricolage Grotesque", Georgia, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.6rem;
+}
+
+.nav-links a {
+  color: var(--ice);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+  color: var(--white);
+  border-bottom-color: var(--sky);
+}
+
+/* =========================================
+   4. HOME SECTION (photo in the center)
+   ========================================= */
+#home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 6vw 5.5rem;
+  color: var(--white);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(96, 193, 229, 0.30), transparent 42%),
+    radial-gradient(circle at 85% 90%, rgba(0, 90, 156, 0.75), transparent 48%),
+    var(--navy);
+}
+
+#home h1 { color: var(--white); }
+
+.photo-wrap {
+  position: relative;
+  margin-bottom: 2.2rem;
+}
+
+.photo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  border: 2px solid var(--ice);
+  border-radius: 50%;
+  opacity: 0.45;
+}
+
+.profile-photo {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--sky);
+  background: var(--blue);
+}
+
+.hello {
+  color: var(--ice);
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.tagline {
+  max-width: 34rem;
+  font-size: 1.25rem;
+  color: var(--ice);
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.8rem;
+  background: var(--sky);
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--sky);
+  border-radius: 999px;
+}
+
+.button:hover { background: var(--ice); border-color: var(--ice); color: var(--navy); }
+
+.button.outline { background: transparent; color: var(--white); }
+.button.outline:hover { background: var(--white); border-color: var(--white); color: var(--navy); }
+
+/* =========================================
+   5. SECTIONS (shared layout)
+   ========================================= */
+.block { padding: 5rem 6vw; }
+.alt { background: var(--ice-soft); }
+
+.container { max-width: 1000px; margin: 0 auto; }
+
+.intro { max-width: 40rem; margin-bottom: 2rem; }
+
+/* =========================================
+   6. ABOUT (CSS grid)
+   ========================================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.facts {
+  background: var(--navy);
+  color: var(--white);
+  padding: 1.5rem;
+  border-radius: 14px;
+}
+
+.facts li { padding: 0.7rem 0; border-bottom: 1px solid rgba(160, 224, 239, 0.25); }
+.facts li:last-child { border-bottom: none; }
+
+.label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ice);
+}
+
+/* =========================================
+   7. CARDS (education and interests)
+   ========================================= */
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.card {
+  flex: 1 1 16rem;
+  max-width: 24rem;
+  padding: 1.6rem;
+  background: var(--white);
+  border-top: 6px solid var(--blue);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(27, 54, 93, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover { transform: translateY(-4px); }
+.card:nth-child(2) { border-top-color: var(--sky); }
+.card:nth-child(3) { border-top-color: var(--ice); }
+
+.card p { margin: 0; }
+.meta { color: var(--blue); font-weight: 600; margin-bottom: 0.4rem; }
+
+/* =========================================
+   8. COLOR PALETTE DISPLAY
+   ========================================= */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 190px;
+  padding: 1.2rem;
+  border-radius: 14px;
+}
+
+.swatch-name { font-family: "Bricolage Grotesque", Georgia, sans-serif; font-size: 1.4rem; font-weight: 700; }
+.swatch-hex { font-weight: 600; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+.swatch-use { font-size: 0.9rem; line-height: 1.4; }
+
+.swatch-navy { background: var(--navy); color: var(--white); }
+.swatch-blue { background: var(--blue); color: var(--white); }
+.swatch-sky  { background: var(--sky);  color: var(--navy); }
+.swatch-ice  { background: var(--ice);  color: var(--navy); }
+
+/* =========================================
+   9. CONTACT AND FOOTER
+   ========================================= */
+.contact-list li { margin-bottom: 0.5rem; }
+
+footer {
+  padding: 1.5rem 6vw;
+  background: var(--navy);
+  color: var(--ice);
+  text-align: center;
+}
+
+footer p { margin: 0; }
+
+/* =========================================
+   10. MOBILE VIEW
+   ========================================= */
+@media (max-width: 700px) {
+  #top-bar { justify-content: center; }
+  .profile-photo { width: 170px; height: 170px; }
+  .block { padding: 3.5rem 6vw; }
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card { transition: none; }
+}
